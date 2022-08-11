@@ -22,20 +22,28 @@ function createGallaryMarkup(galleryItems) {
     })
     .join('');
 }
-
-function createModalWindow() {
-  return basicLightbox.create(
-    `
-        <img src="${event.target.dataset.source}">
-    `
-  );
-}
+const instance = basicLightbox.create(`<img src = ""/>`, {
+  onShow: instance => {
+    window.addEventListener('keydown', closeModalbyEsc);
+  },
+  onClose: instance => {
+    window.removeEventListener('keydown', closeModalbyEsc);
+  },
+});
 
 function handleImageClick(event) {
   event.preventDefault();
-
   if (!event.target.classList.contains('gallery__image')) {
     return;
   }
-  createModalWindow().show();
+  instance.element().querySelector('img').src = event.target.dataset.source;
+
+  instance.show();
+}
+
+function closeModalbyEsc(event) {
+  console.log(event.key);
+  if (event.key === 'Escape') {
+    instance.close();
+  }
 }

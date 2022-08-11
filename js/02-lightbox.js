@@ -26,3 +26,4 @@ function handleImageClick(event) {
 }
 let gallery = new SimpleLightbox('.gallery a');
 gallery.on('show.simplelightbox', function () {});
+gallery.options.fadeSpeed = 250;
