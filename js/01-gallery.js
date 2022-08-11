@@ -29,7 +29,6 @@ function createModalWindow() {
         <img src="${event.target.dataset.source}">
     `
   );
-  // .show();
 }
 
 function handleImageClick(event) {
@@ -39,9 +38,4 @@ function handleImageClick(event) {
     return;
   }
   createModalWindow().show();
-  console.log(basicLightbox.visible());
 }
-
-// //////////////////////////////////////////////////////////
-
-const bodyEl = document.querySelector('body');
